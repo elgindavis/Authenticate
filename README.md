@@ -33,3 +33,4 @@ The Starter offers:
 
 All of those functional and connected with an authentication provider.# Bible-Quotidien
 # Authenticate
+# Authenticate
