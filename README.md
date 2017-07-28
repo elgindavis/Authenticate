@@ -32,3 +32,4 @@ The Starter offers:
 * Signup Page.
 
 All of those functional and connected with an authentication provider.# Bible-Quotidien
+# Authenticate
