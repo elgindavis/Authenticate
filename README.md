@@ -31,4 +31,4 @@ The Starter offers:
 * Reset Password Page.
 * Signup Page.
 
-All of those functional and connected with an authentication provider.
+All of those functional and connected with an authentication provider.# Bible-Quotidien
