@@ -4,6 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
+import firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +15,7 @@ export class MyApp {
   rootPage:any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
-    afAuth: AngularFireAuth) {
+    afAuth: AngularFireAuth, public googlePlus: GooglePlus) {
     
     const authObserver = afAuth.authState.subscribe( user => {
       if (!user) { 
