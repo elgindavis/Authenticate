@@ -16,12 +16,12 @@ import { Facebook } from '@ionic-native/facebook';
 import { AuthProvider } from '../providers/auth/auth';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyBgos-USv39HQ_Ah8LBM_U4YeGTrj-KM4I",
-  authDomain: "social-authentication-starter.firebaseapp.com",
-  databaseURL: "https://social-authentication-starter.firebaseio.com",
-  projectId: "social-authentication-starter",
-  storageBucket: "social-authentication-starter.appspot.com",
-  messagingSenderId: "809778044945"
+  apiKey: "AIzaSyATyr4Y7bYZq-dF-ta8QZv9dTq78ImtPGM",
+    authDomain: "bibleapp-7bd84.firebaseapp.com",
+    databaseURL: "https://bibleapp-7bd84.firebaseio.com",
+    projectId: "bibleapp-7bd84",
+    storageBucket: "bibleapp-7bd84.appspot.com",
+    messagingSenderId: "64484763462"
 }
 
 @NgModule({
