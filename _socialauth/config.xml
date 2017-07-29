@@ -1,8 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.javebratt.socialauth" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Social Authentication Starter</name>
     <description>A social authentication starter built with Ionic 3 and Firebase.</description>
-    <author email="j@javebratt.com" href="https://javebratt.com/">JAVEBRATT</author>
+    <author email="elgindavis9@gmail.com" href="https://javebratt.com/">Elgin Davis</author>
+    <universal-links>
+    <host name="https://k57wz.app.goo.gl/" scheme="https" />
+    <host name="bibleapp-7bd84.firebaseapp.com" scheme="https">
+        <path url="/__/auth/callback"/>
+    </host>
+</universal-links>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />

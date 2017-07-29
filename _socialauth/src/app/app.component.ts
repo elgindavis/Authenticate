@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,7 +17,18 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, 
     afAuth: AngularFireAuth) {
     
-    afAuth.authState.subscribe( user => {
+
+    if (!firebase.apps.length) {
+   firebase.initializeApp({
+	    apiKey: "AIzaSyATyr4Y7bYZq-dF-ta8QZv9dTq78ImtPGM",
+	    authDomain: "bibleapp-7bd84.firebaseapp.com",
+	    databaseURL: "https://bibleapp-7bd84.firebaseio.com",
+	    projectId: "bibleapp-7bd84",
+	    storageBucket: "bibleapp-7bd84.appspot.com",
+	    messagingSenderId: "64484763462"
+    });}
+
+     afAuth.authState.subscribe( user => {
       if (user){
         this.rootPage = HomePage;
       } else {
@@ -24,6 +36,18 @@ export class MyApp {
       }
     });
     
+    firebase.auth().getRedirectResult().then(function(result) {
+	  if (result.credential) {
+	    var token = result.credential.accessToken;
+	    var user = result.user;
+	    console.log(token, user);
+	  }
+	}).catch(function(error) {
+	  // Handle Errors here.
+	  var errorMessage = error.message;
+	  console.log(errorMessage);
+	});
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
