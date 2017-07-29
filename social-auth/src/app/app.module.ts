@@ -6,22 +6,23 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { AuthProvider } from '../providers/auth/auth';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { DataServiceProvider } from '../providers/data-service/data-service';
-import { UserServiceProvider } from '../providers/user-service/user-service';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
-export const config = {
-  apiKey: "AIzaSyATyr4Y7bYZq-dF-ta8QZv9dTq78ImtPGM",
-    authDomain: "bibleapp-7bd84.firebaseapp.com",
-    databaseURL: "https://bibleapp-7bd84.firebaseio.com",
-    projectId: "bibleapp-7bd84",
-    storageBucket: "bibleapp-7bd84.appspot.com",
-    messagingSenderId: "64484763462"
-};
+import { GooglePlus } from '@ionic-native/google-plus';
+import { Facebook } from '@ionic-native/facebook';
+import { AuthProvider } from '../providers/auth/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyBgos-USv39HQ_Ah8LBM_U4YeGTrj-KM4I",
+  authDomain: "social-authentication-starter.firebaseapp.com",
+  databaseURL: "https://social-authentication-starter.firebaseio.com",
+  projectId: "social-authentication-starter",
+  storageBucket: "social-authentication-starter.appspot.com",
+  messagingSenderId: "809778044945"
+}
 
 @NgModule({
   declarations: [
@@ -31,9 +32,9 @@ export const config = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(config),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,10 +44,10 @@ export const config = {
   providers: [
     StatusBar,
     SplashScreen,
+    GooglePlus,
+    Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider,
-    DataServiceProvider,
-    UserServiceProvider
+    AuthProvider
   ]
 })
 export class AppModule {}
