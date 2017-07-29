@@ -8,8 +8,16 @@
 
 
 <ion-content padding class="signup">
-  <img src="http://placehold.it/300x100">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRfT3p4HhU2P3IHbNi6CR68EIrTg6xSaGkAEHsasd9oIcj5lpkVR5Alg">
   <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
+    <ion-item>
+      <ion-label stacked>Username</ion-label>
+      <ion-input formControlName="username" type="text" placeholder="Your name"
+        [class.invalid]="!signupForm.controls.username.valid && signupForm.controls.username.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!signupForm.controls.username.valid  && signupForm.controls.password.dirty">
+      <p>Your username needs more than 6 characters.</p>
+    </ion-item>
 
     <ion-item>
       <ion-label stacked>Email</ion-label>
