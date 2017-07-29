@@ -7,8 +7,12 @@ import {
   AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
+import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 @IonicPage()
 @Component({
@@ -20,7 +24,7 @@ export class LoginPage {
   public loading:Loading;
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController,
     public alertCtrl: AlertController, public formBuilder: FormBuilder,
-    public authProvider: AuthProvider) {
+    public authProvider: AuthProvider, public googlePlus: GooglePlus, public facebook: Facebook, public afAuth: AngularFireAuth) {
 
     this.loginForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -65,4 +69,18 @@ export class LoginPage {
     this.navCtrl.push('PasswordResetPage');
   }
 
+  googleLogin(): Promise<any> {
+    return this.googlePlus.login({
+      'webClientId': '809778044945-roi5n89efs8k7h96i766i1ev0jfsdmlp.apps.googleusercontent.com',
+      'offline': true
+    })
+    .then( res => {
+      const credential = firebase.auth.GoogleAuthProvider.credential(res.idToken);
+      
+      this.afAuth.auth.signInWithCredential(credential)
+        .then( success => { console.log("Firebase success: " + JSON.stringify(success)); })
+        .catch( error => console.log("Firebase failure: " + JSON.stringify(error)));
+      })
+    .catch(err => console.error("Error: ", err));
+  }
 }
