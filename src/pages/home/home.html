@@ -1,9 +1,11 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-     <p id="name"></p>
-
-    </ion-title>
+    <ion-title>Home Page</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goToProfile()">
+        <ion-icon name="person"></ion-icon>
+       </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -14,7 +16,5 @@
   <button ion-button color="positive" block (click)="logMeOut()">
     Log Me Out Please
   </button>
-  <script>
-	document.getElementById("name").innerHTML = 5 + 6;
-</script>
+  
 </ion-content>

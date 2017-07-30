@@ -80,7 +80,9 @@ export class AuthProvider {
    * logoutUser doesn't take any parameters, it looks into the authentication object and signs out
    * the currently logged in user.
    */
-  logoutUser(): firebase.Promise<any> {
+  logoutUser(): firebase.Promise<void> {
+     firebase.database().ref('/userProfile')
+    .child(firebase.auth().currentUser.uid).off();
     return this.afAuth.auth.signOut();
   }
 

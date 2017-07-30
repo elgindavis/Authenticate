@@ -43,10 +43,13 @@ export class SignupPage {
       
       firebase.auth().currentUser.updateProfile({
         displayName: this.signupForm.value.username,
-        photoURL:""
+        photoURL:"http://lorempixel.com/400/200"
         }).then(function() {
         console.log(user.displayName);
           // Update successful.
+          window.location.reload(true);
+          function start() {
+          document.getElementById("name").innerHTML = user.displayName;};
         }).catch(function(error) {
           // An error happened.
           console.log('try again');
