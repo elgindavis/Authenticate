@@ -1,4 +1,4 @@
-Template forked from https://javebratt.com
+Base template forked from https://javebratt.com, updated and extended by Elgin Davis
 
 This is an email and password authentication system built with Ionic and Firebase using AngularFire2.
 
