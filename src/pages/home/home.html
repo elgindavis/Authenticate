@@ -1,13 +1,16 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Hi, <script>
+      console.log(firebase.auth().currentUser.displayName);
+       document.write(firebase.auth().currentUser.displayName); </script>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  Hi, user!
+	
+  
 
   <button ion-button color="positive" block (click)="logMeOut()">
     Log Me Out Please
