@@ -4,22 +4,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
 import { HomePage } from '../home/home';
+import firebase from 'firebase';
 
 @IonicPage()
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
 })
+
 export class SignupPage {
   public signupForm:FormGroup;
   public loading:Loading;
+
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, 
   public alertCtrl: AlertController, public formBuilder: FormBuilder, 
   public authProvider: AuthProvider) {
     
     this.signupForm = formBuilder.group({
+      username: ['', Validators.compose([Validators.minLength(2), Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z ]*')])],
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
-      password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+      password: ['', Validators.compose([Validators.minLength(6), Validators.required, Validators.maxLength(30)])]
     });
   
   }
@@ -27,9 +31,29 @@ export class SignupPage {
   signupUser(){
     if (!this.signupForm.valid){
       console.log(this.signupForm.value);
-    } else {
+    } 
+
+    else {
+
+      console.log(this.signupForm.value.username);
       this.authProvider.signupUser(this.signupForm.value.email, this.signupForm.value.password)
       .then(() => {
+      console.log(this.signupForm.value.username);
+      var user:any = firebase.auth().currentUser;
+      
+      firebase.auth().currentUser.updateProfile({
+        displayName: this.signupForm.value.username,
+        photoURL:"http://lorempixel.com/400/200"
+        }).then(function() {
+        console.log(user.displayName);
+          // Update successful.
+          window.location.reload(true);
+          function start() {
+          document.getElementById("name").innerHTML = user.displayName;};
+        }).catch(function(error) {
+          // An error happened.
+          console.log('try again');
+        });
         this.loading.dismiss().then( () => {
           this.navCtrl.setRoot(HomePage);
         });
@@ -49,4 +73,10 @@ export class SignupPage {
     }
   }
 
-}
+} 
+
+  
+      
+      
+    
+

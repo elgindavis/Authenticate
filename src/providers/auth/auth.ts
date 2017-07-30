@@ -10,9 +10,7 @@ export class AuthProvider {
 
   constructor(public afAuth: AngularFireAuth, public googlePlus: GooglePlus, public afDatabase: AngularFireDatabase, public facebook: Facebook) {}
 
-  /**
-   * loginUser takes in an email and password and signs the user into the application.
-   */
+  
    getUser():firebase.User {
       return this.afAuth.auth.currentUser;
    }
@@ -46,6 +44,10 @@ export class AuthProvider {
       .catch((error) => { console.log(error) });
   }
 
+  /**
+   * loginUser takes in an email and password and signs the user into the application.
+   */
+   
   loginUser(email: string, password: string): firebase.Promise<any> {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
@@ -78,7 +80,9 @@ export class AuthProvider {
    * logoutUser doesn't take any parameters, it looks into the authentication object and signs out
    * the currently logged in user.
    */
-  logoutUser(): firebase.Promise<any> {
+  logoutUser(): firebase.Promise<void> {
+     firebase.database().ref('/userProfile')
+    .child(firebase.auth().currentUser.uid).off();
     return this.afAuth.auth.signOut();
   }
 
