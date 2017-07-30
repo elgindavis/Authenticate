@@ -1,9 +1,8 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Hi, <script>
-      console.log(firebase.auth().currentUser.displayName);
-       document.write(firebase.auth().currentUser.displayName); </script>
+     <p id="name"></p>
+
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -15,4 +14,7 @@
   <button ion-button color="positive" block (click)="logMeOut()">
     Log Me Out Please
   </button>
+  <script>
+	document.getElementById("name").innerHTML = 5 + 6;
+</script>
 </ion-content>
