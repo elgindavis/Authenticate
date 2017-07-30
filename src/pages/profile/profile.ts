@@ -130,6 +130,41 @@ export class ProfilePage {
 	  alert.present();
 	}
 
+	deleteUser(){
+	  let alert = this.alertCtrl.create({
+	    inputs: [
+	      {
+	        name: 'password',
+	        placeholder: 'Enter your password',
+	        type: 'password'
+	      },
+	      {
+	        name: 'password',
+	        placeholder: 'Retype your password',
+	        type: 'password'
+	      },
+	    ],
+	    buttons: [
+	      {
+	        text: 'Delete account',
+	        handler: data => {
+	        	this.profileProvider.deleteUser(data.password).then(function() {
+				  // User deleted.
+				  console.log('User deleted');
+				}).catch(function(error) {
+				  // An error happened.
+				}).then( () => {
+					this.navCtrl.setRoot('LoginPage');
+				});
+	        }
+	      }
+	      
+	    ]
+	  });
+	  alert.present();
+	}
+
+	//Go back to previous page
 	popView(){
      this.navCtrl.pop();
    }

@@ -10,6 +10,7 @@ import { ProfilePage } from '../profile/profile';
 
 
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -47,9 +48,20 @@ public currentUser:firebase.User;
   logMeOut() {
     this.authProvider.logoutUser().then( () => {
       this.navCtrl.setRoot('LoginPage');
+      window.localStorage.removeItem("firebase:session::<host-name>");
     });}
 
   goToProfile(){ 
     this.navCtrl.push('profile'); 
   }
+
+  goToPage(page){
+    this.navCtrl.push(page);
+  }
+
+  
+
+  goToCreate(){ this.navCtrl.push('event-create'); }
+  goToList(){ this.navCtrl.push('event-list'); }  
+
 }
