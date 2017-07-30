@@ -12,6 +12,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ProfileProvider } from '../providers/profile/profile';
+import { EventProvider } from '../providers/event/event';
 
 export const config = {
   apiKey: "AIzaSyATyr4Y7bYZq-dF-ta8QZv9dTq78ImtPGM",
@@ -46,7 +47,8 @@ export const config = {
     AuthProvider,
     GooglePlus,
     Facebook,
-    ProfileProvider
+    ProfileProvider,
+    EventProvider
   ]
 })
 export class AppModule {}

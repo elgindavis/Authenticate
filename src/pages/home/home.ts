@@ -59,8 +59,9 @@ public currentUser:firebase.User;
     this.navCtrl.push(page);
   }
 
-  goToList(){
-    this.navCtrl.push('list');
-  }
+  
+
+  goToCreate(){ this.navCtrl.push('event-create'); }
+  goToList(){ this.navCtrl.push('event-list'); }  
 
 }
